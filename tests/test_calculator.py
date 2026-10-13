@@ -1,5 +1,5 @@
 import pytest
-from src.calculator import add, subtract, multiply, divide
+from src.calculator import add, subtract, multiply, divide, power, modulo
 
 
 # ──────────────────────────────────────────────
@@ -94,3 +94,42 @@ def test_divide_zero_by_number():
 def test_divide_by_zero_error_message():
     with pytest.raises(ZeroDivisionError, match="Cannot divide by zero"):
         divide(1, 0)
+
+
+# ──────────────────────────────────────────────
+# Test power (Lũy thừa)
+# ──────────────────────────────────────────────
+def test_power_positive_exp():
+    assert power(2, 10) == 1024
+
+def test_power_zero_exp():
+    assert power(5, 0) == 1
+
+def test_power_one_exp():
+    assert power(7, 1) == 7
+
+def test_power_negative_base():
+    assert power(-2, 3) == -8
+
+def test_power_negative_exp():
+    assert power(2, -1) == 0.5
+
+def test_power_zero_base():
+    assert power(0, 5) == 0
+
+
+# ──────────────────────────────────────────────
+# Test modulo (Chia lấy dư)
+# ──────────────────────────────────────────────
+def test_modulo_normal():
+    assert modulo(10, 3) == 1
+
+def test_modulo_exact_division():
+    assert modulo(9, 3) == 0
+
+def test_modulo_by_zero_raises():
+    with pytest.raises(ZeroDivisionError):
+        modulo(5, 0)
+
+def test_modulo_larger_divisor():
+    assert modulo(3, 10) == 3
