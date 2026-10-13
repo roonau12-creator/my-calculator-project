@@ -18,3 +18,15 @@ def divide(a, b):
     if b == 0:
         raise ZeroDivisionError("Cannot divide by zero")
     return a / b
+
+
+def power(base, exp):
+    """Lũy thừa: base ^ exp"""
+    return base ** exp
+
+
+def modulo(a, b):
+    """Phép chia lấy dư"""
+    if b == 0:
+        raise ZeroDivisionError("Cannot modulo by zero")
+    return a % b
